@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lista de animales
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Input para filtrar -->
+  <ion-input [(ngModel)]="filtro" (ionInput)="applyFilter()" placeholder="Introduce los datos del filtro" clear-input="true">
+  </ion-input>
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let animal of filteredAnimals">
+        <ion-col size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
+          <ion-card>
+            <ion-card-content>
+              <h1>{{ animal.name }}</h1>
+              <div class="ion-text-center">
+                <img [src]="animal.imagen" class="animal-image">
+              </div>
+              <p><strong>Especie:</strong> {{ animal.species }}</p>
+              <p><strong>Categoría:</strong> {{ animal.category }}</p>
+              <p><strong>Dieta:</strong> {{ animal.diet }}</p>
+              <p><strong>Hábitat:</strong> {{ animal.habitat }}</p>
+              <p><strong>Estado:</strong> {{ animal.conservation_status }}</p>
+              <p><strong>Peso:</strong> {{ animal.weight_kg }} kg</p>
+              <p><strong>Longevidad:</strong> {{ animal.lifespan }} años</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>
